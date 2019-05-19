@@ -22,7 +22,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+ActiveRecord like functions:
+
+```ruby
+project = Facet5::Project.create(<project_id>)
+```
 
 ## Development
 
