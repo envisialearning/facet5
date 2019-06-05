@@ -82,6 +82,7 @@ module Facet5
 
         response = {
           "successful": true,
+          "assessment_url": "https://www.facet5global.net/questionnaire/default.aspx?accessid=#{access_id}",
           "completed": completion_date.nil? ? false : true,
           "completed_at": completion_date.nil? ? nil : completion_date
         }
