@@ -66,7 +66,7 @@ module Facet5
       end
 
       def get_status(authentication = {}, id, language)
-        Facet5::Definitions.to_yaml
+        #Facet5::Definitions.to_yaml
 
         respondent_params = {
           client_details: authentication,
