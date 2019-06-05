@@ -97,7 +97,9 @@ module Facet5
           norm_id: "",
           lcid: Facet5::Definitions.locales["#{language}"],
           viewpoint: "self",
-          access_id: id
+          access_id: id,
+          "timezone-offset": Facet5::Definitions.timezones["#{language}"],
+          force_purchase: true       
         }
 
         puts "FACET5 GEM SPOTLIGHT REPORT"
