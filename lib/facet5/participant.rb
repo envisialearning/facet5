@@ -59,7 +59,7 @@ module Facet5
         response = {
           "access_id": access_id,
           "successful": true,
-          "assessment_url": "https://www.facet5global.net/questionnaire/default.aspx"
+          "assessment_url": "https://www.facet5global.net/questionnaire/default.aspx?accessid=#{accessid}"
         }
 
         return response
