@@ -89,12 +89,12 @@ module Facet5
         return response
       end
 
-      def get_spotlight_pdf_report(authentication={}, id, language)
+      def get_spotlight_pdf_report(authentication={}, id, language, norm_id="")
         report_params = {
           survey_id: "facet5",
           report_id: "spotlightpdf",
           language: Facet5::Definitions.languages["#{language}"],
-          norm_id: "",
+          norm_id: norm_id,
           lcid: Facet5::Definitions.locales["#{language}"],
           viewpoint: "self",
           access_id: id,
@@ -121,12 +121,12 @@ module Facet5
         end
       end
 
-      def get_facet5_profile_pdf_report(authentication={}, id, language)
+      def get_facet5_profile_pdf_report(authentication={}, id, language, norm_id="")
         report_params = {
           survey_id: "facet5",
           report_id: "facet5pdf",
           language: Facet5::Definitions.languages["#{language}"],
-          norm_id: "",
+          norm_id: norm_id,
           lcid: Facet5::Definitions.locales["#{language}"],
           viewpoint: "self",
           access_id: id,
