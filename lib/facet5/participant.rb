@@ -99,15 +99,15 @@ module Facet5
           viewpoint: "self",
           access_id: id,
           "timezone-offset": Facet5::Definitions.timezones["#{language}"],
-          force_purchase: true       
+          force_purchase: true   
         }
 
-        puts "FACET5 GEM SPOTLIGHT REPORT"
-        puts authentication.to_yaml
-        puts id.to_yaml
+        #puts "FACET5 GEM SPOTLIGHT REPORT"
+        #puts authentication.to_yaml
+        #puts id.to_yaml
 
         respondent_response = get_pdf_report(authentication, report_params)
-        puts respondent_response.to_yaml
+        #puts respondent_response.to_yaml
 
         #https://www.facet5global.net/pdftemp/ce53ff7f-18f9-46da-82bf-d302bc6d65fc.pdf
         if respondent_response["successful"]
@@ -134,12 +134,7 @@ module Facet5
           force_purchase: true       
         }
 
-        puts "FACET5 GEM SPOTLIGHT REPORT"
-        puts authentication.to_yaml
-        puts id.to_yaml
-
         respondent_response = get_pdf_report(authentication, report_params)
-        puts respondent_response.to_yaml
 
         #https://www.facet5global.net/pdftemp/ce53ff7f-18f9-46da-82bf-d302bc6d65fc.pdf
         if respondent_response["successful"]
