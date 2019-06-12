@@ -121,6 +121,37 @@ module Facet5
         end
       end
 
+      def get_facet5_profile_pdf_report(authentication={}, id, language)
+        report_params = {
+          survey_id: "facet5",
+          report_id: "facet5pdf",
+          language: Facet5::Definitions.languages["#{language}"],
+          norm_id: "",
+          lcid: Facet5::Definitions.locales["#{language}"],
+          viewpoint: "self",
+          access_id: id,
+          "timezone-offset": Facet5::Definitions.timezones["#{language}"],
+          force_purchase: true       
+        }
+
+        puts "FACET5 GEM SPOTLIGHT REPORT"
+        puts authentication.to_yaml
+        puts id.to_yaml
+
+        respondent_response = get_pdf_report(authentication, report_params)
+        puts respondent_response.to_yaml
+
+        #https://www.facet5global.net/pdftemp/ce53ff7f-18f9-46da-82bf-d302bc6d65fc.pdf
+        if respondent_response["successful"]
+          response = {
+            "successful": true,
+            "report_url": "https://www.facet5global.net/pdftemp/#{respondent_response["response"]}"
+          }
+          return response
+        else
+          return respondent_response
+        end
+      end
       #generic report
       def get_pdf_report(authentication = {}, params={})
         respondent_params = {
