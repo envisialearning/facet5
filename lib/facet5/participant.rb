@@ -102,7 +102,7 @@ module Facet5
           force_purchase: true   
         }
 
-        #puts "FACET5 GEM SPOTLIGHT REPORT"
+        #puts " FACET5 GEM SPOTLIGHT REPORT"
         #puts authentication.to_yaml
         #puts id.to_yaml
 
