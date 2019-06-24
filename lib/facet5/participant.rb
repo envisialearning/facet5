@@ -67,7 +67,7 @@ module Facet5
 
       def get_status(authentication = {}, id, language)
         #Facet5::Definitions.to_yaml
-
+        begin
         respondent_params = {
           client_details: authentication,
           access_id: id,
@@ -79,7 +79,9 @@ module Facet5
         #get completion status by:
         #respondent_response["response"]["facetprofile"]["productstatus"]["respondentsurvey"]["participant"].to_yaml
         #respondent_response["response"]["facetprofile"]["productstatus"]["respondentsurvey"]["participant"]["@completeddate"].to_yaml
-
+        rescue
+          completion_date = nil
+        end
         response = {
           "successful": true,
           "assessment_url": "https://www.facet5global.net/questionnaire/default.aspx?accessid=#{id}",
