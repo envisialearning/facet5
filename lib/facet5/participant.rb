@@ -89,7 +89,7 @@ module Facet5
         return response
       end
 
-      def get_spotlight_pdf_report(authentication={}, id, language, norm_id="")
+      def get_spotlight_pdf_report(authentication={}, id, language, norm_id)
         report_params = {
           survey_id: "facet5",
           report_id: "spotlightpdf",
@@ -121,7 +121,7 @@ module Facet5
         end
       end
 
-      def get_facet5_profile_pdf_report(authentication={}, id, language, norm_id="")
+      def get_facet5_profile_pdf_report(authentication={}, id, language, norm_id)
         report_params = {
           survey_id: "facet5",
           report_id: "facet5pdf",
