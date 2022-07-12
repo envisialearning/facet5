@@ -68,26 +68,35 @@ module Facet5
       def get_status(authentication = {}, id, language)
         #Facet5::Definitions.to_yaml
         begin
-        respondent_params = {
-          client_details: authentication,
-          access_id: id,
-          language: Facet5::Definitions.languages["#{language}"]
-        }
+          respondent_params = {
+            client_details: authentication,
+            access_id: id,
+            language: Facet5::Definitions.languages["#{language}"]
+          }
 
-        respondent_response = post("respondent_status", respondent_params)
-        completion_date = respondent_response["response"]["facetprofile"]["productstatus"]["respondentsurvey"]["participant"]["@completeddate"]
-        #get completion status by:
-        #respondent_response["response"]["facetprofile"]["productstatus"]["respondentsurvey"]["participant"].to_yaml
-        #respondent_response["response"]["facetprofile"]["productstatus"]["respondentsurvey"]["participant"]["@completeddate"].to_yaml
+          respondent_response = post("respondent_status", respondent_params)
+
+          completion_date = respondent_response["response"]["facetprofile"]["productstatus"]["respondentsurvey"]["participant"]["@completeddate"]
+
+          #get completion status by:
+          #respondent_response["response"]["facetprofile"]["productstatus"]["respondentsurvey"]["participant"].to_yaml
+          #respondent_response["response"]["facetprofile"]["productstatus"]["respondentsurvey"]["participant"]["@completeddate"].to_yaml
+          response = {
+            "successful": true,
+            "assessment_url": "https://www.facet5global.net/questionnaire/default.aspx?accessid=#{id}",
+            "completed": completion_date.nil? ? false : true,
+            "completed_at": completion_date.nil? ? nil : completion_date
+          }
         rescue
           completion_date = nil
+          response = {
+            "successful": false,
+            "assessment_url": nil,
+            "completed": false,
+            "completed_at": nil,
+            "errors": "ID is invalid"
+          }
         end
-        response = {
-          "successful": true,
-          "assessment_url": "https://www.facet5global.net/questionnaire/default.aspx?accessid=#{id}",
-          "completed": completion_date.nil? ? false : true,
-          "completed_at": completion_date.nil? ? nil : completion_date
-        }
         return response
       end
 
